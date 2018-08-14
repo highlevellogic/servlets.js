@@ -1,6 +1,6 @@
 # servlets.js
 <h1>JavaScript Servlets</h1>
-<p>JavaScript Servlets provide a fast and contient way to create back end processes on Node.js. They were developed 
+<p>JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js. They were developed 
 as an integral part of Achieve; a complete server for Node.js.<p>
 <p>The Achieve tutorial provides details about using servlets, <a href="" target="http://hll.nu/achieve/">click here</a></p>
 <h2>Features Summary</h2>

@@ -377,14 +377,12 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
         }
-		    if (typeof content === "string") {
 			  	response.writeHead(200, {'Content-Type': fileInfo.contentType, 'server': version});
-			    response.write(content);
-			  }
+			    response.write(content.toString());
 		    } catch (err) {
 			    response.writeHead(500, {'Content-Type': 'text/plain'});
 	        response.write(rtErrorMsg(err,shortPath));
-			  console.log("-startObject end error: " + err.stack);
+			    console.log("Error running servlet: " + err.stack);
         } finally {
 		      response.end();
 			}
@@ -402,14 +400,12 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
        }
-	    if (typeof content === "string") {
 			  response.writeHead(200, {'Content-Type': fileInfo.contentType, 'server': version});
-			  response.write(content);
-			}
+			  response.write(content.toString());
 		  } catch (err) {
 	  		response.writeHead(500, {'Content-Type': 'text/plain'});
 	      response.write(rtErrorMsg(err,shortPath));
-			console.log("-startObject GET error: " + err.stack);
+		  	console.log("Error running servlet: " + err.stack);
 		  } finally {
 		    response.end();
 		  }
@@ -447,7 +443,7 @@ function rtErrorMsg (err,shortPath) {
   var part2 = err.stack.substring(stop1);
   part2 = part2.substring(0,part2.indexOf('\n')-1).replace(/\\/g,"/");
   var reason = "Runtime error: " + part2 + "\n  " + part1;
-  console.log("-startObject(end): " + reason);
+  console.log("Error running servlet: " + reason);
   return reason;
 }
 let load = function (filePath) {

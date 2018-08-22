@@ -11,10 +11,9 @@ let moduleLoadTimes = {};
 let reqCount = 0;
 
    // basePath is the root directory for applications. (Like webapps on Tomcat or htdocs on Apache httpd.)
-   // You may set basePath to anywhere you wish.
-   // let basePath = path.normalize(__dirname); // To specify basePath as the path to this server app.
-   // let basePath = path.normalize("C:/something/something"); // To set basePath to somewhere else.
-   let basePath = path.normalize(__dirname);
+   // The default is the directory of the entry point or main module for the application.
+   // It can be reset by the app developer using .setAppPath(appDir);
+   let basePath = path.normalize(require.main.filename.substring(0,require.main.filename.lastIndexOf(path.sep)));
    let rootPath=basePath;
    let relRootPath="";
    let rootDir=false, showMimes=false;
@@ -363,7 +362,7 @@ function startObject (req,res,fileInfo) {
                 queryData = "";
               }
 			} catch (err) {
-		      console.log("-startObject data error: " + err.stack);
+		      console.log("Error reading data: " + err.stack);
 		    }
           });
           this.req.on('end', function() {
@@ -390,7 +389,7 @@ function startObject (req,res,fileInfo) {
         } else if (this.req.method == "GET") {
           console.log("get");
 		  try {
-            request.get =  querystring.parse(fileInfo.queryString);
+         request.get =  querystring.parse(fileInfo.queryString);
 			let boundLoader = load.bind({request:request,response:response,dirPath:fileInfo.dirPath});
         // This is where the application code is "called"
         let context = new Context(request,response,request.get,fileInfo.dirPath,boundLoader);

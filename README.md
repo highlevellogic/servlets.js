@@ -22,14 +22,15 @@ as an integral part of Achieve; a complete server for Node.js.<p>
 <h3>Using:</h3>
 <pre><code>
 const server = require('servlets');
-server.setAppPath(__dirname);  // Sets the application root to wherever you run this code
 server.listen();  // defaults to port 80
 </code></pre>
+<p>By default, the base application directory is the same as the file you create to start the server. 
+You can set the base application directory with the setAppPath option below.</p>
 <h3>Running servlets with options:</h3>
 <pre><code>
 const server = require('servlets');
 
-server.setAppPath("c:/myachieve/myapps");                // set root directory for all applications
+server.setAppPath("c:/myachieve/myapps");                // set base directory for all applications
 server.setRootDir('root');                               // set a subdirectory under the root directory for THE ROOT application
 server..showMimeTypes();                                 // Show the current list of supported Mime Types
 server.addMimeType("xsl", "application/vnd.ms-excel");   // add an unsupported mime type

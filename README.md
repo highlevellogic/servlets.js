@@ -32,7 +32,7 @@ const server = require('servlets');
 
 server.setAppPath("c:/myachieve/myapps");                // set base directory for all applications
 server.setRootDir('root');                               // set a subdirectory under the root directory for THE ROOT application
-server..showMimeTypes();                                 // Show the current list of supported Mime Types
+server.showMimeTypes();                                 // Show the current list of supported Mime Types
 server.addMimeType("xsl", "application/vnd.ms-excel");   // add an unsupported mime type
 server.setNodeEnv("development");                        // set Node environment 
 

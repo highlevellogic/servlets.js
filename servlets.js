@@ -21,6 +21,7 @@ let reqCount = 0;
    let version = "HLL Servlets vx.xx";
    let shortVersion = "01";
    let etagString = nodeVersion() + shortVersion;
+   let defaultCharSet="utf-8";
 
 exports.showMimeTypes = function () {
   showMimes=true;
@@ -376,7 +377,7 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
         }
-			  	response.writeHead(200, {'Content-Type': fileInfo.contentType, 'server': version});
+			  	response.writeHead(200, {'Content-Type': fileInfo.contentType+';charset='+defaultCharSet, 'server': version});
 			    response.write(content.toString());
 		    } catch (err) {
 			    response.writeHead(500, {'Content-Type': 'text/plain'});
@@ -399,7 +400,7 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
        }
-			  response.writeHead(200, {'Content-Type': fileInfo.contentType, 'server': version});
+			  response.writeHead(200, {'Content-Type': fileInfo.contentType+';charset='+defaultCharSet, 'server': version});
 			  response.write(content.toString());
 		  } catch (err) {
 	  		response.writeHead(500, {'Content-Type': 'text/plain'});

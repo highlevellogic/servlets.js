@@ -1,8 +1,11 @@
 # servlets.js
+<section style="background-color:LightSkyBlue;">
+<a href="http://hll.nu"><img src="http://hll.nu/achieve/skyhigh1.jpg"></a>
 <h1>JavaScript Servlets</h1>
 <p>JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js. They were developed 
 as an integral part of Achieve; a complete server for Node.js.<p>
-<p>The Achieve tutorial provides details about using servlets, <a href="" target="http://hll.nu/achieve/">click here</a></p>
+<p>The Achieve tutorial provides details about using servlets, <a href="https://hll.nu/achieve/" target="_blank">click here</a></p>
+<p>Achieve and servlets.js are part of the <a href="https://hll.nu">High Level Logic Project</a>.
 <h2>Features Summary</h2>
 <ul>
 <li>Runs back-end JavaScript programs (via JavaScript Servlets).</li>
@@ -32,7 +35,7 @@ const server = require('servlets');
 
 server.setAppPath("c:/myachieve/myapps");                // set base directory for all applications
 server.setRootDir('root');                               // set a subdirectory under the root directory for THE ROOT application
-server.showMimeTypes();                                 // Show the current list of supported Mime Types
+server.showMimeTypes();                                  // Show the current list of supported Mime Types
 server.addMimeType("xsl", "application/vnd.ms-excel");   // add an unsupported mime type
 server.setNodeEnv("development");                        // set Node environment 
 
@@ -87,3 +90,4 @@ exports.servlet = function (context) {
   context.dirPath    // The current application path on your computer
   context.load       // The JavaScript Servlet load() method (see above)
 </code></pre>
+</section>

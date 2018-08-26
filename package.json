@@ -1,6 +1,6 @@
 {
   "name": "servlets.js",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js.",
   "main": "servlets",
   "scripts": {

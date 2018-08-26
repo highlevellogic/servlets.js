@@ -117,7 +117,7 @@ function reportError (res,account,statusCode,reason) {
   } finally {
 	  console.log(statusCode + ": " + reason);
     res.statusCode=statusCode;
-    res.setHeader('Content-Type','text/plain');
+    res.setHeader('Content-Type','text/plain;charset=utf-8');
     res.end(reason);
   }
 }
@@ -355,6 +355,8 @@ function startObject (req,res,fileInfo) {
     if (goodPath && typeof myApp.servlet == 'function') {
 	  // Extract data sent from the browser for POST or GET
 	  let queryData="";
+    response.setHeader('server', version);
+    response.setHeader('Content-Type','text/plain;charset=utf-8');
         if (this.req.method == "POST") {
 	      this.req.on('data', function(data) {
 			try {
@@ -377,10 +379,10 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
         }
-			  	response.writeHead(200, {'Content-Type': fileInfo.contentType+';charset='+defaultCharSet, 'server': version});
+          response.statusCode=200;
 			    response.write(content.toString());
 		    } catch (err) {
-			    response.writeHead(500, {'Content-Type': 'text/plain'});
+			    response.statusCode=500;
 	        response.write(rtErrorMsg(err,shortPath));
 			    console.log("Error running servlet: " + err.stack);
         } finally {
@@ -400,10 +402,10 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
        }
-			  response.writeHead(200, {'Content-Type': fileInfo.contentType+';charset='+defaultCharSet, 'server': version});
+			  response.statusCode=200;
 			  response.write(content.toString());
 		  } catch (err) {
-	  		response.writeHead(500, {'Content-Type': 'text/plain'});
+	  		response.statusCode=500;
 	      response.write(rtErrorMsg(err,shortPath));
 		  	console.log("Error running servlet: " + err.stack);
 		  } finally {

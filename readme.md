@@ -3,8 +3,8 @@
 <h1>JavaScript Servlets</h1>
 <p>JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js. They were developed 
 as an integral part of Achieve; a complete server for Node.js.<p>
-<p>The Achieve tutorial provides details about using servlets, <a href="" target="http://hll.nu/achieve/">click here</a></p>
-<p>Achieve and servlets.js are part of the <a href="http://hll.nu">High Level Logic Project</a>.
+<p>The Achieve tutorial provides details about using servlets, <a href="https://hll.nu/achieve/" target="_blank">click here</a></p>
+<p>Achieve and servlets.js are part of the <a href="https://hll.nu">High Level Logic Project</a>.
 <h2>Features Summary</h2>
 <ul>
 <li>Runs back-end JavaScript programs (via JavaScript Servlets).</li>

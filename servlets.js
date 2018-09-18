@@ -375,18 +375,19 @@ function startObject (req,res,fileInfo) {
         // This is where the application code is "called"
         let context = new Context(request,response,request.get,fileInfo.dirPath,boundLoader);
         let content = myApp.servlet(context);
-        if (response.finished) {
+        if (response.finished || context.allowAsync) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
         }
           response.statusCode=200;
 			    response.write(content.toString());
+          response.end();
 		    } catch (err) {
 			    response.statusCode=500;
 	        response.write(rtErrorMsg(err,shortPath));
+          response.end();
 			    console.log("Error running servlet: " + err.stack);
-        } finally {
-		      response.end();
+        }
 			}
 	      });
         } else if (this.req.method == "GET") {
@@ -398,18 +399,18 @@ function startObject (req,res,fileInfo) {
         let context = new Context(request,response,request.get,fileInfo.dirPath,boundLoader);
         let content = myApp.servlet(context);
         console.log(fileInfo.path + " started " + response.finished);
-       if (response.finished) {
+       if (response.finished || context.allowAsync) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
        }
 			  response.statusCode=200;
 			  response.write(content.toString());
+        response.end();
 		  } catch (err) {
 	  		response.statusCode=500;
 	      response.write(rtErrorMsg(err,shortPath));
+        response.end();
 		  	console.log("Error running servlet: " + err.stack);
-		  } finally {
-		    response.end();
 		  }
         } else if (this.req.method == "HEAD") {
           response.statusCode = 200;

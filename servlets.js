@@ -380,7 +380,7 @@ function startObject (req,res,fileInfo) {
           return;
         }
           response.statusCode=200;
-			    response.write(content.toString());
+			    response.write(content);
           response.end();
 		    } catch (err) {
 			    response.statusCode=500;
@@ -404,7 +404,7 @@ function startObject (req,res,fileInfo) {
           return;
        }
 			  response.statusCode=200;
-			  response.write(content.toString());
+			  response.write(content);
         response.end();
 		  } catch (err) {
 	  		response.statusCode=500;

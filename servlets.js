@@ -378,6 +378,10 @@ function startObject (req,res,fileInfo) {
         if (response.finished || context.allowAsync) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
+        } else if (typeof content !== String) {
+          console.log("INFO: POST " + fileInfo.path + " Return type from servlet is not String.");
+          response.end();
+          return;
         }
           response.statusCode=200;
 			    response.write(content);
@@ -401,6 +405,10 @@ function startObject (req,res,fileInfo) {
         console.log(fileInfo.path + " started " + response.finished);
        if (response.finished || context.allowAsync) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
+          return;
+       } else if (typeof content !== String) {
+          console.log("INFO: GET " + fileInfo.path + " Return type from servlet is not String.");
+          response.end();
           return;
        }
 			  response.statusCode=200;

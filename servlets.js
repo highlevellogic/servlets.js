@@ -355,6 +355,7 @@ function startObject (req,res,fileInfo) {
     if (goodPath && typeof myApp.servlet == 'function') {
 	  // Extract data sent from the browser for POST or GET
 	  let queryData="";
+    let wmsg;
     response.setHeader('server', version);
     response.setHeader('Content-Type','text/plain;charset=utf-8');
         if (this.req.method == "POST") {
@@ -379,7 +380,10 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
         } else if (typeof content !== String) {
-          console.log("INFO: POST " + fileInfo.path + " Return type from servlet is not String.");
+          wmsg="WARNING: " + fileInfo.path + " Return type from servlet is " + typeof content + ".";
+          console.log(wmsg);
+          response.statusCode=608;
+			    response.write(wmsg);
           response.end();
           return;
         }
@@ -407,7 +411,10 @@ function startObject (req,res,fileInfo) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
        } else if (typeof content !== String) {
-          console.log("INFO: GET " + fileInfo.path + " Return type from servlet is not String.");
+          wmsg="WARNING: " + fileInfo.path + " Return type from servlet is " + typeof content + ".";
+          console.log(wmsg);
+          response.statusCode=608;
+			    response.write(wmsg);
           response.end();
           return;
        }

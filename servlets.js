@@ -356,6 +356,7 @@ function startObject (req,res,fileInfo) {
 	  // Extract data sent from the browser for POST or GET
 	  let queryData="";
     let wmsg;
+    let content;
     response.setHeader('server', version);
     response.setHeader('Content-Type','text/plain;charset=utf-8');
         if (this.req.method == "POST") {
@@ -375,7 +376,7 @@ function startObject (req,res,fileInfo) {
         let boundLoader = load.bind({request:request,response:response,dirPath:fileInfo.dirPath});
         // This is where the application code is "called"
         let context = new Context(request,response,request.get,fileInfo.dirPath,boundLoader);
-        let content = myApp.servlet(context);
+        content = myApp.servlet(context);
         if (response.finished || context.allowAsync) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
@@ -405,7 +406,7 @@ function startObject (req,res,fileInfo) {
 			let boundLoader = load.bind({request:request,response:response,dirPath:fileInfo.dirPath});
         // This is where the application code is "called"
         let context = new Context(request,response,request.get,fileInfo.dirPath,boundLoader);
-        let content = myApp.servlet(context);
+        content = myApp.servlet(context);
         console.log(fileInfo.path + " started " + response.finished);
        if (response.finished || context.allowAsync) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");

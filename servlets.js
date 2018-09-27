@@ -379,22 +379,22 @@ function startObject (req,res,fileInfo) {
         if (response.finished || context.allowAsync) {
           console.log("INFO: POST " + fileInfo.path + " Session ended by application.");
           return;
-        } else if (typeof content !== String) {
-          wmsg="WARNING: " + fileInfo.path + " Return type from servlet is " + typeof content + ".";
-          console.log(wmsg);
+        } else if (content === undefined || content === null) {
+          wmsg="WARNING: Return value from servlet " + fileInfo.path + " is " + content + ".";
           response.statusCode=608;
 			    response.write(wmsg);
           response.end();
+          console.log(wmsg);
           return;
         }
           response.statusCode=200;
 			    response.write(content);
           response.end();
 		    } catch (err) {
-			    response.statusCode=500;
-	        response.write(rtErrorMsg(err,shortPath));
-          response.end();
-			    console.log("Error running servlet: " + err);
+			    response.end();
+          wmsg="WARNING: Return value from servlet " + fileInfo.path + " is " + content + ".";
+          console.log(wmsg);
+			    rtErrorMsg(err,shortPath);
         }
 			}
 	      });
@@ -410,22 +410,22 @@ function startObject (req,res,fileInfo) {
        if (response.finished || context.allowAsync) {
           console.log("INFO: GET " + fileInfo.path + " session ended by application.");
           return;
-       } else if (typeof content !== String) {
-          wmsg="WARNING: " + fileInfo.path + " Return type from servlet is " + typeof content + ".";
-          console.log(wmsg);
+       } else if (content === undefined || content === null) {
+          wmsg="WARNING: Return value from servlet " + fileInfo.path + " is " + content + ".";
           response.statusCode=608;
 			    response.write(wmsg);
           response.end();
+          console.log(wmsg);
           return;
-       }
+        }
 			  response.statusCode=200;
 			  response.write(content);
         response.end();
 		  } catch (err) {
-	  		response.statusCode=500;
-	      response.write(rtErrorMsg(err,shortPath));
-        response.end();
-		  	console.log("Error running servlet: " + err);
+	  		response.end();
+        wmsg="WARNING: Return value from servlet " + fileInfo.path + " is " + content + ".";
+        console.log(wmsg);
+			  rtErrorMsg(err,shortPath);
 		  }
         } else if (this.req.method == "HEAD") {
           response.statusCode = 200;

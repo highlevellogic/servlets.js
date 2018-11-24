@@ -51,6 +51,7 @@ exports.setAppPath = function (bp) {
   } catch (err) {console.log(err);}
 }
 exports.listen = function (port) {
+  let server;
   try {
   if (port === undefined) {
     port=80;
@@ -66,7 +67,7 @@ exports.listen = function (port) {
     port=80;
   }
   
-let server = http.createServer(function (req, res) {
+server = http.createServer(function (req, res) {
    // Get information about the requested file or application.
    let fileInfo = setFileInfo(req,res,basePath);
  // display(fileInfo);
@@ -108,6 +109,7 @@ let server = http.createServer(function (req, res) {
     }
   }
   console.log("\n");
+  return server;
 }
 function reportError (res,account,statusCode,reason) {
   if (statusCode === undefined) statusCode = 500;

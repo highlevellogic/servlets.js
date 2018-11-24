@@ -1,6 +1,6 @@
 {
   "name": "servlets.js",
-  "version": "1.0.22",
+  "version": "1.0.24",
   "description": "JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js.",
   "main": "servlets",
   "scripts": {
@@ -23,7 +23,7 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/highlevellogic/servlets.js/issues",
-    "email": "highlevellogic@yahoo.com"
+    "email": "rogerfgay@yahoo.com"
   },
   "homepage": "https://github.com/highlevellogic/servlets.js#readme",
   "engines": {

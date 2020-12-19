@@ -1,7 +1,7 @@
 # servlets.js
 <section style="background-color:LightSkyBlue;">
 <a href="http://hll.nu"><img src="http://hll.nu/achieve/skyhigh1.jpg"></a>
-<h1>JavaScript Servlets Depricated - Totally Unsupported - Use Achieve directly instead</h1>
+<h1>JavaScript Servlets Depricated - Totally Unsupported - Use Achieve directly instead - maybe later if Achieve is rewritten</h1>
 <p>JavaScript Servlets provide a fast and convenient way to create back end processes on Node.js. They were developed 
 as an integral part of Achieve; a complete server for Node.js.<p>
 <p>The Achieve tutorial provides details about using servlets, <a href="https://hll.nu/achieve/" target="_blank">click here</a></p>
